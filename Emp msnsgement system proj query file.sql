@@ -372,7 +372,7 @@ SELECT * FROM Employee WHERE department_id = 2 AND hire_date > '2023-01-01';
 -- where using OR
 SELECT * FROM Project WHERE project_loc = 'Location A' OR project_loc = 'Location B';
 
--- where uisnh between
+-- where uisng between
 SELECT * FROM Salary WHERE salary BETWEEN 5000 AND 10000;
 
 -- where using like
@@ -454,7 +454,41 @@ FROM Department;
 SELECT SUM(salary) AS total_salary_expenditure
 FROM Salary;
 
-select * from department
+select * from department;
+
+
+
+-- Creating a view to combine Employee, Department, and Salary information
+CREATE VIEW EmployeeDetail AS
+SELECT e.employee_id, e.first_name, e.last_name, e.email, e.phone_number, 
+       d.department_name, d.Comp_city, d.Comp_State,
+       s.salary
+FROM Employee e
+INNER JOIN Department d ON e.department_id = d.department_id
+INNER JOIN Salary s ON e.employee_id = s.employee_id;
+
+-- Example query using ORDER BY to sort employees by salary in descending order
+SELECT *
+FROM EmployeeDetails
+ORDER BY salary DESC;
+
+
+
+/* all tables seem to satisfy 1NF criteria. Each table has unique column names, and each cell contains atomic values.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
